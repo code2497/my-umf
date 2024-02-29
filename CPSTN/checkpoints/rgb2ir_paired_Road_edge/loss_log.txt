@@ -1,0 +1,2 @@
+================ Training Loss (Thu Feb 29 10:28:49 2024) ================
+(epoch: 1, iters: 100, time: 0.606, data: 23.877) D_A: 0.261 G_A: 0.370 cycle_A: 12.397 idt_A: 0.000 D_B: 0.078 G_B: 0.878 cycle_B: 9.108 idt_B: 0.000 

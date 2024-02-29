@@ -71,8 +71,11 @@ class DeformableNet(nn.Module):
         # self.integrate1 = VecInt(down_shape1, int_steps)
 
     def load_state_dict(self, state_dict, strict = False):
-        state_dict.pop('spatial_transform.grid')
-        state_dict.pop('spatial_transform_f.grid')
+        # state_dict.pop('spatial_transform.grid')
+        # state_dict.pop('spatial_transform_f.grid')
+        del state_dict['net']['spatial_transform_f.grid']
+        del state_dict['net']['spatial_transform.grid']
+        print("删除成功")
         super().load_state_dict(state_dict, strict)
 
     def forward(self, tgt, src, shape=None):

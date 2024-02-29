@@ -17,7 +17,7 @@ class AffineTransform(nn.Module):
 
     def __init__(self, degrees=0, translate=0.1):
         super(AffineTransform, self).__init__()
-        self.trs = kornia.augmentation.RandomAffine(degrees, (translate, translate), return_transform=True, p=1)
+        self.trs = kornia.augmentation.RandomAffine(degrees, (translate, translate), p=1)
 
     def forward(self, input):
         # image shape

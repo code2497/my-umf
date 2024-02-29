@@ -13,8 +13,8 @@ import torchvision
 from torch import Tensor
 from tqdm import tqdm
 
-from functions.affine_transform import AffineTransform
-from functions.elastic_transform import ElasticTransform
+from affine_transform import AffineTransform
+from elastic_transform import ElasticTransform
 
 
 class getDeformableImages:
@@ -132,9 +132,9 @@ def hyper_args():
 
     parser = argparse.ArgumentParser(description='Generating deformable testing data')
     # dataset
-    parser.add_argument('--ir', default='../dataset/raw/ctest/Road/ir', type=pathlib.Path)
-    parser.add_argument('--vi', default='../dataset/raw/ctest/Road/vi', type=pathlib.Path)
-    parser.add_argument('--dst', default='../dataset/test/', help='fuse image save folder', type=pathlib.Path)
+    parser.add_argument('--ir', default='F:/school/UMF-CMGR/rgb2ir/RoadScene/testB', type=pathlib.Path)
+    parser.add_argument('--vi', default='F:/school/UMF-CMGR/rgb2ir/RoadScene/testA', type=pathlib.Path)
+    parser.add_argument('--dst', default='F:/school/UMF-CMGR/rgb2ir/RoadScene/proc_testB', help='fuse image save folder', type=pathlib.Path)
 
     args = parser.parse_args()
     return args

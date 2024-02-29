@@ -292,8 +292,8 @@ def calc_img_metrics(mse_metric, ncc_metric, lncc_metric, root_in, root_gt):
 
 if __name__ == '__main__':
 
-    root_in = '/home/zongzong/WD/Fusion/JointRegFusion/results_Road/Reg/220507_Deformable_2*Fe_10*Grad/ir_reg/'
-    root_gt = '../dataset/raw/ctest/Road/ir_121/'
+    root_in = 'F:/school/UMF-CMGR/test-reg-dataset/reg-result/ir'
+    root_gt = 'F:/school/UMF-CMGR/test-reg-dataset/reg-result/ir_reg'
 
     mse_metric  = MSE().cuda()
     lncc_metric = LNCC().cuda()

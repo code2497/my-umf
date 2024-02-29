@@ -28,14 +28,14 @@ def hyper_args():
     parser = argparse.ArgumentParser(description='RegNet Net eval process')
 
     # dataset
-    parser.add_argument('--it',   default='../dataset/raw/ctest/Road/it_edge', type=pathlib.Path)
-    parser.add_argument('--ir', default='../dataset/raw/ctest/Road/ir_w',    type=pathlib.Path)
-    parser.add_argument('--disp', default='../dataset/raw/ctest/Road/disp',    type=pathlib.Path)
+    parser.add_argument('--it',   default='F:/school/UMF-CMGR/test-reg-dataset/it', type=pathlib.Path)
+    parser.add_argument('--ir', default='F:/school/UMF-CMGR/test-reg-dataset/ir_warp',    type=pathlib.Path)
+    parser.add_argument('--disp', default='F:/school/UMF-CMGR/test-reg-dataset/disp',    type=pathlib.Path)
     # checkpoint
-    parser.add_argument('--ckpt', default='../cache/Reg_only/220507_Deformable_2*Fe_10*Grad/cp_0720.pth', help='weight checkpoint', type=pathlib.Path) # weight/default.pth
-    parser.add_argument('--dst',  default='../results_Road/Reg/220507_Deformable_2*Fe_10*Grad/', help='fuse image save folder', type=pathlib.Path)
+    parser.add_argument('--ckpt', default='F:/school/UMF-CMGR/reg_0280.pth', help='weight checkpoint', type=pathlib.Path) # weight/default.pth
+    parser.add_argument('--dst',  default='F:/school/UMF-CMGR/test-reg-dataset/reg-result', help='fuse image save folder', type=pathlib.Path)
 
-    parser.add_argument("--cuda", action="store_false", help="Use cuda?")
+    parser.add_argument("--cuda", default=True , help="Use cuda?")
 
     args = parser.parse_args()
     return args

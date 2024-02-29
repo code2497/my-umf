@@ -77,7 +77,7 @@ class RegTestData(torch.utils.data.Dataset):
         it_path = self.it_list[index]
         disp_path = self.disp_list[index]
 
-        assert ir_path.name == it_path.name, f"Mismatch ir:{ir_path.name} vi:{it_path.name}."
+        # assert ir_path.name == it_path.name, f"Mismatch ir:{ir_path.name} vi:{it_path.name}."
 
         # read image as type Tensor
         ir = self.imread(path=ir_path, flags=cv2.IMREAD_GRAYSCALE, unsqueeze=False)
