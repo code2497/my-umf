@@ -14,8 +14,8 @@ import torchvision.transforms
 
 from tqdm import tqdm
 import torch.nn.functional
-from functions.affine_transform import AffineTransform
-from functions.elastic_transform import ElasticTransform
+from affine_transform import AffineTransform
+from elastic_transform import ElasticTransform
 from dataloader.reg_data import RegData
 from models.deformable_net import DeformableNet
 from loss.reg_losses import LossFunction_Dense
