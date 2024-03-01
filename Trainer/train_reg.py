@@ -25,17 +25,17 @@ def hyper_args():
 # Training settings
     parser = argparse.ArgumentParser(description="PyTorch Corss-modality Registration")
     # dataset
-    parser.add_argument('--ir', default='../dataset/raw/ctrain/Road/ir', type=pathlib.Path)
-    parser.add_argument('--it', default='../dataset/raw/ctrain/Road/it_edge', type=pathlib.Path)
+    parser.add_argument('--ir', default='../train-reg-dataset/ir', type=pathlib.Path)
+    parser.add_argument('--it', default='../train-reg-dataset/it', type=pathlib.Path)
     parser.add_argument("--batchsize", type=int, default=16, help="training batch size")
-    parser.add_argument("--nEpochs", type=int, default=800, help="number of epochs to train for")
+    parser.add_argument("--nEpochs", type=int, default=200, help="number of epochs to train for")
     parser.add_argument("--lr", type=float, default=1e-3, help="Learning Rate. Default=1e-4")
-    parser.add_argument("--step", type=int, default=1200, help="Sets the learning rate to the initial LR decayed by momentum every n epochs, Default: n=10")
+    parser.add_argument("--step", type=int, default=10, help="Sets the learning rate to the initial LR decayed by momentum every n epochs, Default: n=10")
     parser.add_argument("--cuda", action="store_false", help="Use cuda?")
     parser.add_argument("--resume", default="", type=str, help="Path to checkpoint (default: none)")
     parser.add_argument("--start_epoch", default=1, type=int, help="Manual epoch number (useful on restarts)")
-    parser.add_argument("--pretrained", default="../cache/Reg_only/220506_Deformable_2*Fe_10*Grad/cp_0800.pth", type=str, help="path to pretrained model (default: none)")
-    parser.add_argument("--ckpt", default="../cache/Reg_only/220507_Deformable_2*Fe_10*Grad", type=str, help="path to pretrained model (default: none)")
+    parser.add_argument("--pretrained", default=None, type=str, help="path to pretrained model (default: none)")
+    parser.add_argument("--ckpt", default="../train-reg-weight", type=str, help="path to pretrained model (default: none)")
     args = parser.parse_args()
     return args
 
