@@ -1,11 +1,12 @@
 import sys
 
-sys.path.append("..")
-
+# sys.path.append("..")
 import visdom
 import pathlib
 import warnings
 import argparse, os
+
+sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
 
 import numpy
 import torch.backends.cudnn

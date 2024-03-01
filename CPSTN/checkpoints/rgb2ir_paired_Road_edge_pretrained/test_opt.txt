@@ -3,7 +3,7 @@
                batch_size: 1                             
           checkpoints_dir: ./checkpoints                 
                 crop_size: 256                           
-                 dataroot: F:\school\UMF-CMGR\rgb2ir\RoadScene\testA	[default: None]
+                 dataroot: F:\school\UMF-CMGR\RoadScene\crop_LR_visible	[default: None]
              dataset_mode: single                        
                 direction: AtoB                          
           display_winsize: 256                           
@@ -32,7 +32,7 @@
               num_threads: 4                             
                 output_nc: 1                             
                     phase: test                          
-               preprocess: none                          	[default: resize_and_crop]
+               preprocess: resize_and_crop               
               results_dir: ./results/                    
            serial_batches: False                         
                    suffix:                               
