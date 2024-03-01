@@ -159,6 +159,6 @@ def save_checkpoint(net, epoch, cache):
 if __name__ == "__main__":
     warnings.filterwarnings("ignore")
     args = hyper_args()
-    visdom = visdom.Visdom(port=8097, env='Reg')
+    visdom = visdom.Visdom(port=8097, env='Reg', log_to_filename="../visdom-log", offline=True)
 
     main(args, visdom)
