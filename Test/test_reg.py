@@ -32,8 +32,8 @@ def hyper_args():
     parser.add_argument('--ir', default='F:/school/UMF-CMGR/test-reg-dataset/ir_warp',    type=pathlib.Path)
     parser.add_argument('--disp', default='F:/school/UMF-CMGR/test-reg-dataset/disp',    type=pathlib.Path)
     # checkpoint
-    parser.add_argument('--ckpt', default='F:/school/UMF-CMGR/reg_0280.pth', help='weight checkpoint', type=pathlib.Path) # weight/default.pth
-    parser.add_argument('--dst',  default='F:/school/UMF-CMGR/test-reg-dataset/reg-result', help='fuse image save folder', type=pathlib.Path)
+    parser.add_argument('--ckpt', default='F:/school/UMF-CMGR/cp_0300.pth', help='weight checkpoint', type=pathlib.Path) # weight/default.pth
+    parser.add_argument('--dst',  default='F:/school/UMF-CMGR/test-reg-result', help='fuse image save folder', type=pathlib.Path)
 
     parser.add_argument("--cuda", default=True , help="Use cuda?")
 

@@ -292,8 +292,8 @@ def calc_img_metrics(mse_metric, ncc_metric, lncc_metric, root_in, root_gt):
 
 if __name__ == '__main__':
 
-    root_in = 'F:/school/UMF-CMGR/test-reg-dataset/reg-result/ir'
-    root_gt = 'F:/school/UMF-CMGR/test-reg-dataset/reg-result/ir_reg'
+    root_in = 'F:/school/UMF-CMGR/test-reg-result/ir_reg'
+    root_gt = 'F:/school/UMF-CMGR/rgb2ir/RoadScene/testB'
 
     mse_metric  = MSE().cuda()
     lncc_metric = LNCC().cuda()
