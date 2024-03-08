@@ -26,8 +26,8 @@ def hyper_args():
 # Training settings
     parser = argparse.ArgumentParser(description="PyTorch Corss-modality Registration")
     # dataset
-    parser.add_argument('--ir', default='../train-reg-dataset/ir', type=pathlib.Path)
-    parser.add_argument('--it', default='../train-reg-dataset/it', type=pathlib.Path)
+    parser.add_argument('--ir', default='../train-reg-dataset-my/ir', type=pathlib.Path)
+    parser.add_argument('--it', default='../train-reg-dataset-my/it', type=pathlib.Path)
     parser.add_argument("--batchsize", type=int, default=16, help="training batch size")
     parser.add_argument("--nEpochs", type=int, default=200, help="number of epochs to train for")
     parser.add_argument("--lr", type=float, default=1e-3, help="Learning Rate. Default=1e-4")
@@ -102,23 +102,27 @@ def train(training_data_loader, optimizer, net, criterion, epoch, elastic, affin
         ir = ir.cuda() # torch.Size([16, 1, 256, 256])
         it = it.cuda()
 
-        ir_affine, affine_disp = affine(ir)
-        ir_elastic, elastic_disp = elastic(ir_affine)
-        disp = affine_disp + elastic_disp
-        ir_warp = ir_elastic
+        # ir_affine, affine_disp = affine(ir)
+        # ir_elastic, elastic_disp = elastic(ir_affine)
+        # disp = affine_disp + elastic_disp
+        # ir_warp = ir_elastic
 
-        ir_warp.detach_()
-        disp.detach_()
+        # ir_warp.detach_()
+        # disp.detach_()
 
-        ir_pred, f_warp, flow, int_flow1, int_flow2, disp_pre = net(it, ir_warp)
-        loss1, loss2, grad_loss, loss = _warp_Dense_loss_unsupervised(criterion, ir_pred, f_warp, it, ir_warp, flow,
-                                                                      int_flow1, int_flow2)
+        # ir_pred, f_warp, flow, int_flow1, int_flow2, disp_pre = net(it, ir_warp)
+        ir_pred, f_warp, flow, int_flow1, int_flow2, disp_pre = net(it, ir)
+        
+        # loss1, loss2, grad_loss, loss = _warp_Dense_loss_unsupervised(criterion, ir_pred, f_warp, it, ir_warp, flow, int_flow1, int_flow2)
+        loss1, loss2, grad_loss, loss = _warp_Dense_loss_unsupervised(criterion, ir_pred, f_warp, it, ir, flow, int_flow1, int_flow2)
+        
         optimizer.zero_grad()
         loss.backward()
         optimizer.step()
 
         if tqdm_loader.n % 20 == 0:
-            show = torch.stack([it[0], ir_warp[0], ir_pred[0], ir[0]])
+            # show = torch.stack([it[0], ir_warp[0], ir_pred[0], ir[0]])
+            show = torch.stack([it[0], ir[0], ir_pred[0]])
             visdom.images(show, win='var')
 
         loss_rec.append(loss.item())
@@ -159,6 +163,7 @@ def save_checkpoint(net, epoch, cache):
 if __name__ == "__main__":
     warnings.filterwarnings("ignore")
     args = hyper_args()
+    # visdom = visdom.Visdom(port=8097, env='Reg', log_to_filename="../visdom-log", offline=True)
     visdom = visdom.Visdom(port=8097, env='Reg', log_to_filename="../visdom-log", offline=True)
 
     main(args, visdom)
