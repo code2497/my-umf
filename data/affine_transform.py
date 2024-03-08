@@ -15,7 +15,7 @@ class AffineTransform(nn.Module):
     - no p and same_on_batch
     """
 
-    def __init__(self, degrees=0, translate=0.1):
+    def __init__(self, degrees=0, translate=0):
         super(AffineTransform, self).__init__()
         self.trs = kornia.augmentation.RandomAffine(degrees, (translate, translate), return_transform=True, p=1)
 

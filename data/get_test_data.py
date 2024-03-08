@@ -134,7 +134,7 @@ def hyper_args():
     # dataset
     parser.add_argument('--ir', default='F:/school/UMF-CMGR/rgb2ir/RoadScene/testB', type=pathlib.Path)
     parser.add_argument('--vi', default='F:/school/UMF-CMGR/rgb2ir/RoadScene/testA', type=pathlib.Path)
-    parser.add_argument('--dst', default='F:/school/UMF-CMGR/rgb2ir/RoadScene/proc_testB', help='fuse image save folder', type=pathlib.Path)
+    parser.add_argument('--dst', default='F:/school/UMF-CMGR/data/get_test_data_res', help='fuse image save folder', type=pathlib.Path)
 
     args = parser.parse_args()
     return args
