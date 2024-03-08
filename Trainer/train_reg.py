@@ -91,7 +91,7 @@ def train(training_data_loader, optimizer, net, criterion, epoch, elastic, affin
 
     # TODO: update learning rate of the optimizer
     lr = adjust_learning_rate(optimizer, epoch - 1)
-    print("Epoch={}, lr={}".format(epoch, lr))
+    # print("Epoch={}, lr={}".format(epoch, lr))
 
     loss_rec = []
     loss_pos = []
@@ -115,7 +115,9 @@ def train(training_data_loader, optimizer, net, criterion, epoch, elastic, affin
         
         # loss1, loss2, grad_loss, loss = _warp_Dense_loss_unsupervised(criterion, ir_pred, f_warp, it, ir_warp, flow, int_flow1, int_flow2)
         loss1, loss2, grad_loss, loss = _warp_Dense_loss_unsupervised(criterion, ir_pred, f_warp, it, ir, flow, int_flow1, int_flow2)
-        
+        if epoch % 10 == 0:
+            print("Epoch={}, lr={}, loss={}".format(epoch, lr, loss))
+
         optimizer.zero_grad()
         loss.backward()
         optimizer.step()
