@@ -115,8 +115,8 @@ def train(training_data_loader, optimizer, net, criterion, epoch, elastic, affin
         
         # loss1, loss2, grad_loss, loss = _warp_Dense_loss_unsupervised(criterion, ir_pred, f_warp, it, ir_warp, flow, int_flow1, int_flow2)
         loss1, loss2, grad_loss, loss = _warp_Dense_loss_unsupervised(criterion, ir_pred, f_warp, it, ir, flow, int_flow1, int_flow2)
-        if epoch % 10 == 0:
-            print("Epoch={}, lr={}, loss={}".format(epoch, lr, loss))
+        # if epoch % 10 == 0:
+        #     print("Epoch={}, lr={}, loss={}".format(epoch, lr, loss))
 
         optimizer.zero_grad()
         loss.backward()
@@ -136,7 +136,9 @@ def train(training_data_loader, optimizer, net, criterion, epoch, elastic, affin
     loss_pos = numpy.mean(loss_pos)
     loss_neg = numpy.mean(loss_neg)
     loss_grad = numpy.mean(loss_grad)
-
+    if epoch % 10 == 0:
+        print("Epoch={}, lr={}, loss={}".format(epoch, lr, loss_avg))
+        
     visdom.line([loss_avg], [epoch], win='loss', name='Total-loss', opts=dict(title='Total-loss'), update='append' if epoch else '')
     visdom.line([loss_pos], [epoch], win='loss_1', name='L1-loss', opts=dict(title='Feats-loss'), update='append' if epoch else '')
     visdom.line([loss_neg], [epoch], win='loss_2', name='L2-loss', opts=dict(title='Pixel-loss'), update='append' if epoch else '')
